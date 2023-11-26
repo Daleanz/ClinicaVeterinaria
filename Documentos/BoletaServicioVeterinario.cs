@@ -28,6 +28,12 @@ namespace Documentos{
 
         public override void MostrarInformacionDocumento(){
             System.Console.WriteLine("Boleta Veterinaria:");
+            Console.WriteLine(
+                    $"+-----------------------------+\n"+
+                    $"|    R.U.T.: 99.999.999-9     |\n"+
+                    $"|     BOLETA ELECTRÓNICA      |\n"+
+                    $"|            N° 1             |\n"+
+                    $"+-----------------------------+\n");
             System.Console.WriteLine($"Fecha: {base.FechaDocumento}\n"+
                     $"Clinica: {base.NombreClinica}\n"+
                     $"Direccion: {base.DireccionClinica}\n"+
