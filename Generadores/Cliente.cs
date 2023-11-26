@@ -1,12 +1,11 @@
 using System;
 using Generadores;
-using Excepciones;
 using Clientes;
 
 namespace Generadores{
     abstract class Cliente : Persona{
         private string tipoCliente;
-        private string[] tipoClientes = {"cliente regular", "cliente emergencia", "cleinte aec"};
+        private string[] tipoClientes = {"cliente regular", "cliente emergencia", "cliente aec"};
 
         public Cliente(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string tipoCliente) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
             this.tipoCliente = tipoCliente;
