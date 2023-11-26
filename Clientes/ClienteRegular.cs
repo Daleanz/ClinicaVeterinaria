@@ -8,7 +8,7 @@ namespace Clientes{
         private string correoElectronicoCliente;
         private string direccionCliente;
 
-        public ClienteRegular(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, int tiempoCliente, int citasPromedioCliente, string direccionCliente, string correoElectronicoCliente) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
+        public ClienteRegular(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, int tiempoCliente, int citasPromedioCliente, string correoElectronicoCliente, string direccionCliente) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
             this.tiempoCliente = tiempoCliente;
             this.citasPromedioCliente = citasPromedioCliente;
             this.correoElectronicoCliente = correoElectronicoCliente;
@@ -36,15 +36,15 @@ namespace Clientes{
         }
 
         public override void MostrarInformacion(){
-            System.Console.WriteLine("Información del Cliente Regular");
+            System.Console.WriteLine("Informacion Cliente Regular:");
             System.Console.WriteLine($"Nombre: {base.NombrePersona}\n"+
-                   $"Apellido: {base.ApellidoPersona}\n"+
-                   $"Rut: {base.RutPersona}\n"+
-                   $"Telefono: {base.TelefonoPersona}\n"+
-                   $"Tiempo: {TiempoCliente}\n"+
-                   $"Promedio Citas: {CitasPromedioCliente}\n"+
-                   $"Correo Electronico: {CorreoElectronicoCliente}\n"+
-                   $"Direccion: {DireccionCliente}");
+                    $"Apellido: {base.ApellidoPersona}\n"+
+                    $"Rut: {base.RutPersona}\n"+
+                    $"Telefono: {base.TelefonoPersona}\n"+
+                    $"Correo: {CorreoElectronicoCliente}\n"+
+                    $"Direccion: {DireccionCliente}\n"+
+                    $"Tiempo siendo cliente: {TiempoCliente}\n"+
+                    $"Citas Promedio: {CitasPromedioCliente}\n");
         }
     }
 }
