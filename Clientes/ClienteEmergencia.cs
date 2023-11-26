@@ -3,41 +3,40 @@ using Generadores;
 
 namespace Clientes{
     class ClienteEmergencia : Persona{
-        private string categorizacionClienteEmergencia;
-        private string direccionClienteEmergencia;
-        private string correoElectronicoClienteEmergencia;
+        private string categoriaCE;
+        private string direccionCE;
+        private string correoElectronicoCE;
 
-        public ClienteEmergencia(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string direccionClienteEmergencia, string correoElectronicoClienteEmergencia, string categorizacionClienteEmergencia) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
-           this.categorizacionClienteEmergencia = categorizacionClienteEmergencia;
-           this.direccionClienteEmergencia = direccionClienteEmergencia;
-           this.correoElectronicoClienteEmergencia = correoElectronicoClienteEmergencia;
+        public ClienteEmergencia(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string categoriaEC, string direccionCE, string correoElectronicoCE) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
+            this.categoriaCE = categoriaCE;
+            this.direccionCE = direccionCE;
+            this.correoElectronicoCE = correoElectronicoCE;
         }
 
-        public string CategorizacionClienteEmergencia{
-            get{return categorizacionClienteEmergencia;}
-            set{this.categorizacionClienteEmergencia = value;}
-        } 
-
-        public string DireccionClienteEmergencia{
-            get{return direccionClienteEmergencia;}
-            set{this.direccionClienteEmergencia = value;}
+        public string CategoriaEC{
+            get{return categoriaCE;}
+            set{this.categoriaCE = value;}
         }
 
-        public string CorreoElectronicoClienteEmergencia{
-            get{return correoElectronicoClienteEmergencia;}
-            set{this.correoElectronicoClienteEmergencia = value;}
+        public string DireccionCE{
+            get{return direccionCE;}
+            set{this.direccionCE = value;}
+        }
+
+        public string CorreoElectronicoCE{
+            get{return correoElectronicoCE;}
+            set{this.correoElectronicoCE = value;}
         }
 
         public override void MostrarInformacion(){
-            System.Console.WriteLine("Información del Cliente Regular");
+            System.Console.WriteLine("Informacion Cliente Emergencia:");
             System.Console.WriteLine($"Nombre: {base.NombrePersona}\n"+
-                   $"Apellido: {base.ApellidoPersona}\n"+
-                   $"Rut: {base.RutPersona}\n"+
-                   $"Telefono: {base.TelefonoPersona}\n"+
-                   $"Categorizacion: {CategorizacionClienteEmergencia}\n"+
-                   $"Correo Electronico: {CorreoElectronicoClienteEmergencia}\n"+
-                   $"Direccion: {DireccionClienteEmergencia}");
+                    $"Apellido: {base.ApellidoPersona}\n"+
+                    $"Rut: {base.RutPersona}\n"+
+                    $"Telefono: {base.TelefonoPersona}\n"+
+                    $"Correo: {CorreoElectronicoCE}\n"+
+                    $"Direccion: {DireccionCE}\n"+
+                    $"Categoria: {CategoriaEC}");
         }
-
     }
-} 
+}
