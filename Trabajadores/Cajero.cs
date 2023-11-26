@@ -1,8 +1,10 @@
 using System;
 using Generadores;
+using Interfaces;
+using Inventario;
 
 namespace Trabajadores{
-    class Cajero : Persona{
+    class Cajero : Persona, ICajero{
         private string tiempoDeServicio;
         private string correoElectronicoCajero;
         private string direccionCajero;
@@ -11,6 +13,18 @@ namespace Trabajadores{
             this.tiempoDeServicio = tiempoDeServicio;
             this.correoElectronicoCajero = correoElectronicoCajero;
             this.direccionCajero = direccionCajero;
+        }
+
+        public void VenderProducto(Bodega bodega, Producto producto, int cantidad){
+            if(bodega.ObtenerCapacidadRestante() < cantidad){
+                System.Console.WriteLine($"No existen suficientes productos de: {producto.NombreProducto}");
+            }else{
+                for(int i = 0; i < cantidad; i ++){
+                    bodega.EliminarProductoInventario(producto);
+                }
+            }
+            // Falta generar la boleta.
+            System.Console.WriteLine($"Si se puede vender {cantidad} unidades de {producto.NombreProducto}");
         }
 
         public string CorreoElectronicoCajero{
