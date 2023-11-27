@@ -5,12 +5,18 @@ namespace Generadores{
     abstract class Producto{
         private string nombreProducto;
         private double precioProducto;
+        private int cantidadProducto;
 
-        public Producto(string nombreProducto, double precioProducto){
+        public Producto(string nombreProducto, double precioProducto, int cantidadProducto){
             this.nombreProducto = nombreProducto;
             this.precioProducto = precioProducto;
+            this.cantidadProducto = cantidadProducto;
         }
 
+        public int CantidadProducto{
+            get{return cantidadProducto;}
+            set{this.cantidadProducto = value;}
+        }
         public double PrecioProducto{
             get{return precioProducto;}
             set{this.precioProducto = value;}
