@@ -1,9 +1,11 @@
 using System;
 using Generadores;
 using SaludAnimal;
+using Interfaces;
+using Productos;
 
 namespace Clientes{
-    class ClienteAEC : Persona{
+    class ClienteAEC : Persona, ICliente{
         private string tipoEnfermedadCronica;
         private int tiempoCronico;
         private string direccionCAEC;
@@ -11,6 +13,7 @@ namespace Clientes{
         private List<Tratamiento> tratamientos;
         private List<Cirugia> cirugias;
         private List<Radiografia> radiografias;
+        private List<Producto> compras;
 
         public ClienteAEC(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string tipoEnfermedadCronica, int tiempoCronico, string direccionCAEC, string correoElectronicoCAEC) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
            this.tipoEnfermedadCronica = tipoEnfermedadCronica;
@@ -20,7 +23,53 @@ namespace Clientes{
            this.tratamientos = new List<Tratamiento>();
            this.cirugias = new List<Cirugia>();
            this.radiografias = new List<Radiografia>();
+           this.compras = new List<Producto>();
         }
+
+        public void ComprarProducto(Producto producto, int cantidad){
+            compras.Add(producto);
+        }
+
+        public void DevolverProducto(Producto producto, int cantidad){
+            if(compras.Count == 0){
+                System.Console.WriteLine("No puede devolver nada, porque no tiene ningun producto.");
+            } 
+            if(compras.Count != 0){
+                int tipoComidaPerro = ContarTipoProducto<ComidaPerro>(compras);
+                int tipoComidaGato = ContarTipoProducto<ComidaGato>(compras);
+                int tipoJuguete = ContarTipoProducto<Juguete>(compras);
+
+                foreach(var pro in compras){
+                    if(producto == pro){
+                        for(int i = 0; i < cantidad; i ++){
+                            compras.Remove(pro);
+                        }
+                    } 
+                }
+                System.Console.WriteLine("Se han devuelto correctamente los productos.");
+            }
+        }
+
+        public int ContarTipoProducto<T>(List<Producto> lista){
+            return lista.Count(item => item is T);
+        }
+
+        public List<Producto> ObtenerCompras{
+            get{return compras;}
+        }
+
+        public List<Tratamiento> ObtenerTratamientos{
+            get{return tratamientos;}
+        }
+
+        public List<Radiografia> ObtenerRadiografias{
+            get{return radiografias;}
+        }
+
+        public List<Cirugia> ObtenerCirugias{
+            get{return cirugias;}
+        }
+
 
         public void AgregarTratamiento(Tratamiento tratamiento){
             tratamientos.Add(tratamiento);
@@ -100,20 +149,27 @@ namespace Clientes{
                     $"Direccion: {DireccionCAEC}\n"+
                     $"Tipo Enfermedad Animal: {TipoEnfermedadCronica}\n"+
                     $"Tiempo Cronico: {TiempoCronico}");
+           
+            if(tratamientos.Count != 0){
+                System.Console.WriteLine("Tratamiento");
+                foreach(Tratamiento tratamiento in tratamientos){
+                    tratamiento.MostrarInformacionTratamiento();
+                }
+
+            }
+
+            if(cirugias.Count != 0){
+                System.Console.WriteLine("Cirugias");
+                foreach(Cirugia cirugia in cirugias){
+                    cirugia.MostrarInformacionCirugia();
+                }
+            }
             
-            System.Console.WriteLine("Tratamientos");
-            foreach(Tratamiento tratamiento in tratamientos){
-                tratamiento.MostrarInformacionTratamiento();
-            }
-
-            System.Console.WriteLine("Cirugias");
-            foreach(Cirugia cirugia in cirugias){
-                cirugia.MostrarInformacionCirugia();
-            }
-
-            System.Console.WriteLine("Radiografias");
-            foreach(Radiografia radiografia in radiografias){
-                radiografia.MostrarInformacionRadiografia();
+            if(radiografias.Count != 0){
+                System.Console.WriteLine("Radiografias");
+                foreach(Radiografia radiografia in radiografias){
+                    radiografia.MostrarInformacionRadiografia();
+                }
             }
         }
     }
