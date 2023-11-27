@@ -5,7 +5,7 @@ namespace Productos{
     class ComidaPerro : Producto{
         private string tipoComida;
 
-        public ComidaPerro(string nombreProducto, double precioProducto, int cantidadProducto, string tipoComida) : base(nombreProducto, precioProducto, cantidadProducto){
+        public ComidaPerro(string nombreProducto, int precioProducto, int cantidadProducto, string tipoComida) : base(nombreProducto, precioProducto, cantidadProducto){
             this.tipoComida = tipoComida;
         }
 
