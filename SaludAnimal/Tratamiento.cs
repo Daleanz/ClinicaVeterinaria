@@ -5,11 +5,18 @@ namespace SaludAnimal{
         private string tipoTratamiento;
         private string duracionTratamiento;
         private double costoTratamiento;
+        private int cantidadTratamiento;
 
-        public Tratamiento(string tipoTratamiento, string duracionTratamiento, double costoTratamiento){
+        public Tratamiento(string tipoTratamiento, string duracionTratamiento, double costoTratamiento, int cantidadTratamiento){
             this.tipoTratamiento = tipoTratamiento;
             this.duracionTratamiento = duracionTratamiento;
             this.costoTratamiento = costoTratamiento;
+            this.cantidadTratamiento = cantidadTratamiento;
+        }
+
+        public int CantidadTratamiento{
+            get{return cantidadTratamiento;}
+            set{this.cantidadTratamiento = value;}
         }
 
         public string TipoTratamiento{
@@ -31,7 +38,9 @@ namespace SaludAnimal{
             System.Console.WriteLine("Informacion Tratamiento");
             System.Console.WriteLine($"Tipo: {TipoTratamiento}\n"+
                     $"Duracion: {DuracionTratamiento}\n"+
-                    $"Costo: ${CostoTratamiento}");
+                    $"Costo: ${CostoTratamiento}\n"+
+                    $"Cantidad: {CantidadTratamiento}\n"+
+                    $"Total: {CantidadTratamiento * CostoTratamiento}");
         }
     }
 }
