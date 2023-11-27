@@ -5,7 +5,7 @@ namespace Productos{
     class Juguete : Producto{
         private string tipoJuguete;
 
-        public Juguete(string nombreProducto, double precioProducto, string tipoJuguete) : base(nombreProducto, precioProducto){
+        public Juguete(string nombreProducto, double precioProducto, int cantidadProducto, string tipoJuguete) : base(nombreProducto, precioProducto, cantidadProducto){
             this.tipoJuguete = tipoJuguete;
         }
 
@@ -17,7 +17,8 @@ namespace Productos{
         public override void MostrarInformacionProducto(){
             System.Console.WriteLine($"Informacion del Producto: {base.NombreProducto}");
             System.Console.WriteLine($"Tipo: {TipoJuguete}\n"+
-                    $"Precio: {base.PrecioProducto}");
+                    $"Precio: {base.PrecioProducto}\n"+
+                    $"Cantidad: {base.CantidadProducto}");
         }
     }
 }
