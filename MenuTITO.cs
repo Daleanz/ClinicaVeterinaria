@@ -77,7 +77,8 @@ namespace Main{
             }
             
 
-            string producto = " ", tipoComida = " ";
+            string? producto = null;
+            string? tipoComida = null;
             double cantidad;
             int precio;
 
@@ -86,6 +87,7 @@ namespace Main{
                     Console.WriteLine("Comida para Gato");
                     Console.Write("Nombre del Producto: "); producto = Console.ReadLine();
                     Console.Write("Precio: ");              
+                    
                     try{
                         precio = Convert.ToInt32(Console.ReadLine());
                     }catch(System.OverflowException){
@@ -99,6 +101,7 @@ namespace Main{
                         MenuCompra();
                         precio=0;
                     }
+                    
                     Console.Write("Tipo de Comida: ");      tipoComida = Console.ReadLine();
                     Console.Write("Cantidad: ");            cantidad = Convert.ToDouble(Console.ReadLine());
 
@@ -111,6 +114,7 @@ namespace Main{
                     Console.WriteLine("Comida para Perro");
                     Console.Write("Nombre del Producto: "); producto = Console.ReadLine();
                     Console.Write("Precio: ");              
+                    
                     try{
                         precio = Convert.ToInt32(Console.ReadLine());
                     }catch(System.OverflowException){
@@ -124,6 +128,7 @@ namespace Main{
                         MenuCompra();
                         precio=0;
                     }
+                    
                     Console.Write("Tipo de Comida: ");      tipoComida = Console.ReadLine();
                     Console.Write("Cantidad: ");            cantidad = Convert.ToDouble(Console.ReadLine());
                     
@@ -136,6 +141,7 @@ namespace Main{
                     Console.WriteLine("Juguete");
                     Console.Write("Nombre del Producto: "); producto = Console.ReadLine();
                     Console.Write("Precio: ");              
+                    
                     try{
                         precio = Convert.ToInt32(Console.ReadLine());
                     }catch(System.OverflowException){
@@ -149,7 +155,8 @@ namespace Main{
                         MenuCompra();
                         precio=0;
                     }
-                    Console.Write("Tipo de Juguete: ");     string tipoJuguete = Console.ReadLine();
+                    string? tipoJuguete = null;
+                    Console.Write("Tipo de Juguete: ");     tipoJuguete = Console.ReadLine();
                     Console.Write("Cantidad: ");            cantidad = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine();
@@ -198,7 +205,7 @@ namespace Main{
 
             switch(op){
                 case 1:
-                    string tipoCirugia = "";
+                    string? tipoCirugia = null;
                     Console.WriteLine("----Cirugia----");
                     Console.Write("Tipo de Cirugia: ");            tipoCirugia = Console.ReadLine();
                     Console.Write("Costo de la Cirugia: ");        double costoCirugia = Convert.ToDouble(Console.ReadLine());
@@ -207,7 +214,7 @@ namespace Main{
                     cirugia.MostrarInformacionCirugia();
                     break;
                 case 2:
-                    string tipoRadiografia = "";
+                    string? tipoRadiografia = null;
                     Console.WriteLine("----Radiografía----");
                     Console.Write("Tipo de Radiografía: ");        tipoRadiografia = Console.ReadLine();
                     Console.Write("Costo de la Radiografía: ");    double costoRadiografia = Convert.ToDouble(Console.ReadLine());
@@ -217,8 +224,8 @@ namespace Main{
                     
                     break;
                 case 3:
-                    string tipoTratamiento = " ";
-                    string duracionTratamiento = " ";
+                    string? tipoTratamiento = null;
+                    string? duracionTratamiento = null;
 
                     Console.WriteLine("----Tratamiento----");
                     Console.Write("Tipo de Tratamiento: ");          tipoTratamiento = Console.ReadLine();
@@ -267,13 +274,13 @@ namespace Main{
                 MenuCrearTrabajador();
             }
             
-            string nombrePersona = " ";
-            string apellidoPersona = " ";
-            string runPersona = " ";
-            string telefonoPersona = " ";
-            string tiempoServicioPersona = " ";
-            string correoElectronicoPersona = " ";
-            string direccionPersona = " ";
+            string? nombrePersona = null;
+            string? apellidoPersona = null;
+            string? runPersona = null;
+            string? telefonoPersona = null;
+            string? tiempoServicioPersona = null;
+            string?correoElectronicoPersona = null;
+            string? direccionPersona = null;
 
             switch(op){
                 case 1:
@@ -307,7 +314,7 @@ namespace Main{
                     guardia.MostrarInformacion();
                     break;
                 case 3:
-                    string tipoVeterinario = " ";
+                    string? tipoVeterinario = null;
 
                     Console.WriteLine("Datos Veterinario");
                     Console.Write("Nombre: ");              nombrePersona = Console.ReadLine();
