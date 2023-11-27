@@ -7,7 +7,7 @@ namespace Generadores{
         private double precioProducto;
         private int cantidadProducto;
 
-        public Producto(string nombreProducto, double precioProducto, int cantidadProducto){
+        public Producto(string nombreProducto, int precioProducto, int cantidadProducto){
             this.nombreProducto = nombreProducto;
             this.precioProducto = precioProducto;
             this.cantidadProducto = cantidadProducto;
