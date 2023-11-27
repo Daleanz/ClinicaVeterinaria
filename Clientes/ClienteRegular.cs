@@ -5,7 +5,7 @@ using Interfaces;
 using Productos; 
 
 namespace Clientes{
-    class ClienteRegular : Persona, ICompraCliente{
+    class ClienteRegular : Persona, ICompraCliente, ICliente{
         private string tiempoCliente;
         private string citasPromedioCliente;
         private string correoElectronicoCliente;
@@ -13,7 +13,7 @@ namespace Clientes{
         private List<Tratamiento> tratamientos;
         private List<Cirugia> cirugias;
         private List<Radiografia> radiografias;
-        private List<Object> compras;
+        private List<Producto> compras;
 
         public ClienteRegular(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string tiempoCliente, string citasPromedioCliente, string correoElectronicoCliente, string direccionCliente) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
             this.tiempoCliente = tiempoCliente;
@@ -23,7 +23,7 @@ namespace Clientes{
             this.tratamientos = new List<Tratamiento>();
             this.cirugias = new List<Cirugia>();
             this.radiografias = new List<Radiografia>();
-            this.compras = new List<Object>();
+            this.compras = new List<Producto>();
         }
 
         public void ComprarProducto(Producto producto, int cantidad){
@@ -39,19 +39,44 @@ namespace Clientes{
                 int tipoComidaGato = ContarTipoProducto<ComidaGato>(compras);
                 int tipoJuguete = ContarTipoProducto<Juguete>(compras);
 
-                for(int i = 0; i < cantidad; i ++){
-                    compras.Remove(i);
+                foreach(var pro in compras){
+                    if(producto == pro){
+                        for(int i = 0; i < cantidad; i ++){
+                            compras.Remove(pro);
+                        }
+                    } 
                 }
                 System.Console.WriteLine("Se han devuelto correctamente los productos.");
             }
         }
 
-        public int ContarTipoProducto<T>(List<Object> lista){
+        public int ContarTipoProducto<T>(List<Producto> lista){
             return lista.Count(item => item is T);
         }
 
+        public List<Producto> ObtenerCompras{
+            get{return compras;}
+        }
+
+        public List<Tratamiento> ObtenerTratamientos{
+            get{return tratamientos;}
+        }
+
+        public List<Radiografia> ObtenerRadiografias{
+            get{return radiografias;}
+        }
+
+        public List<Cirugia> ObtenerCirugias{
+            get{return cirugias;}
+        }
+
+
         public void AgregarTratamiento(Tratamiento tratamiento){
             tratamientos.Add(tratamiento);
+        }
+
+        public int CantidadItem{
+            get{return tratamientos.Count + radiografias.Count + cirugias.Count + compras.Count;}
         }
 
         public void AgregarCirugia(Cirugia cirugia){
