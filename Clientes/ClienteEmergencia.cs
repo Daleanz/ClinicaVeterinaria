@@ -1,15 +1,18 @@
 using System;
 using Generadores;
 using SaludAnimal;
+using Interfaces;
+using Productos;
 
 namespace Clientes{
-    class ClienteEmergencia : Persona{
+    class ClienteEmergencia : Persona, ICompraCliente, ICliente{
         private string categoriaCE;
         private string direccionCE;
         private string correoElectronicoCE;
         private List<Tratamiento> tratamientos;
         private List<Cirugia> cirugias;
         private List<Radiografia> radiografias;
+        private List<Producto> compras;
 
         public ClienteEmergencia(string nombrePersona, string apellidoPersona, string rutPersona, string telefonoPersona, string categoriaCE, string direccionCE, string correoElectronicoCE) : base(nombrePersona, apellidoPersona, rutPersona, telefonoPersona){
             this.categoriaCE = categoriaCE;
@@ -18,8 +21,52 @@ namespace Clientes{
             this.tratamientos = new List<Tratamiento>();
             this.cirugias = new List<Cirugia>();
             this.radiografias = new List<Radiografia>();
+            this.compras = new List<Producto>();
         }
 
+        public void ComprarProducto(Producto producto, int cantidad){
+            compras.Add(producto);
+        }
+
+        public void DevolverProducto(Producto producto, int cantidad){
+            if(compras.Count == 0){
+                System.Console.WriteLine("No puede devolver nada, porque no tiene ningun producto.");
+            } 
+            if(compras.Count != 0){
+                int tipoComidaPerro = ContarTipoProducto<ComidaPerro>(compras);
+                int tipoComidaGato = ContarTipoProducto<ComidaGato>(compras);
+                int tipoJuguete = ContarTipoProducto<Juguete>(compras);
+
+                foreach(var pro in compras){
+                    if(producto == pro){
+                        for(int i = 0; i < cantidad; i ++){
+                            compras.Remove(pro);
+                        }
+                    } 
+                }
+                System.Console.WriteLine("Se han devuelto correctamente los productos.");
+            }
+        }
+
+        public int ContarTipoProducto<T>(List<Producto> lista){
+            return lista.Count(item => item is T);
+        }
+
+        public List<Producto> ObtenerCompras{
+            get{return compras;}
+        }
+
+        public List<Tratamiento> ObtenerTratamientos{
+            get{return tratamientos;}
+        }
+
+        public List<Radiografia> ObtenerRadiografias{
+            get{return radiografias;}
+        }
+
+        public List<Cirugia> ObtenerCirugias{
+            get{return cirugias;}
+        }
         public void AgregarTratamiento(Tratamiento tratamiento){
             tratamientos.Add(tratamiento);
         }
@@ -93,19 +140,26 @@ namespace Clientes{
                     $"Direccion: {DireccionCE}\n"+
                     $"Categoria: {CategoriaEC}");
             
-            System.Console.WriteLine("Tratamientos");
-            foreach(Tratamiento tratamiento in tratamientos){
-                tratamiento.MostrarInformacionTratamiento();
+            if(tratamientos.Count != 0){
+                System.Console.WriteLine("Tratamiento");
+                foreach(Tratamiento tratamiento in tratamientos){
+                    tratamiento.MostrarInformacionTratamiento();
+                }
+
             }
 
-            System.Console.WriteLine("Cirugias");
-            foreach(Cirugia cirugia in cirugias){
-                cirugia.MostrarInformacionCirugia();
+            if(cirugias.Count != 0){
+                System.Console.WriteLine("Cirugias");
+                foreach(Cirugia cirugia in cirugias){
+                    cirugia.MostrarInformacionCirugia();
+                }
             }
-
-            System.Console.WriteLine("Radiografias");
-            foreach(Radiografia radiografia in radiografias){
-                radiografia.MostrarInformacionRadiografia();
+            
+            if(radiografias.Count != 0){
+                System.Console.WriteLine("Radiografias");
+                foreach(Radiografia radiografia in radiografias){
+                    radiografia.MostrarInformacionRadiografia();
+                }
             }
         }
     }
